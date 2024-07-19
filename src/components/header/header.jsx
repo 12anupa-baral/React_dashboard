@@ -14,57 +14,66 @@ const logo = (
   </div>
 );
 
-const activeLink =({isActive})=>(isActive?`${styles.active}`:"")
+const activeLink = ({ isActive }) => (isActive ? styles.active : "");
 
 function Header() {
-  const [showMenu, setshowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = () => {
-    setshowMenu(!showMenu)
-  }
+    setShowMenu(!showMenu);
+  };
   const hideMenu = () => {
-    setshowMenu(false)
-  }
-
+    setShowMenu(false);
+  };
 
   return (
     <header>
       <div className={styles.header}>
         {logo}
-        <nav className={showMenu?`${styles["show-nav"]}`:`${styles["hide-nav"]}`}>
-          <div className={showMenu?`${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}`:`${styles["nav-wrapper"]}`}  onClick={hideMenu}>
-
-          </div>
+        <nav className={showMenu ? styles["show-nav"] : styles["hide-nav"]}>
+          <div
+            className={showMenu ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}` : styles["nav-wrapper"]}
+            onClick={hideMenu}
+          ></div>
 
           <ul onClick={hideMenu}>
             <li className={styles["logo-mobile"]}>
               {logo}
-              <FaTimes size={22} color="#fff" onClick={hideMenu}/>
+              <FaTimes size={22} color="#fff" onClick={hideMenu} />
             </li>
 
             <li>
-              <NavLink to='/' className={activeLink}>
-              Home
-
+              <NavLink to="/" className={activeLink}>
+                Home
               </NavLink>
             </li>
 
             <li>
-              <NavLink to='/dashboard' className={activeLink}>
-              Dashboard
-
+              <NavLink to="/dashboard" className={activeLink}>
+                Dashboard
               </NavLink>
             </li>
           </ul>
 
+          <div className={styles["header-right"]} onClick={hideMenu}>
+            <span className={styles.links}>
+              <NavLink to="/login" className={activeLink}>
+                Login
+              </NavLink>
+              <NavLink to="/register" className={activeLink}>
+                Register
+              </NavLink>
+            </span>
+            <Link to="/getstarted">
+              <button className="--btn --btn-primary">Get Started</button>
+            </Link>
+          </div>
         </nav>
         <div className={styles["menu-icon"]}>
-          <HiOutlineMenuAlt3 size={28}   onClick={toggleMenu} />
-
-         
+          <HiOutlineMenuAlt3 size={28} onClick={toggleMenu} />
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

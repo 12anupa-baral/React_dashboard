@@ -1,13 +1,4 @@
-*{
-  margin:0;
-  padding: 0;
 
-}
-:root {
-  --dark-blue: #1e3a5f;
-  --color-danger: #ff0000;
-
-}
 .fixed {
     width: 100%;
     position: fixed;
@@ -63,7 +54,8 @@
         li {
           margin: 0 5px;
           a {
-            color: #fff;
+            color: var(--color-white);
+            text-decoration: none;
             &:hover {
               color: orangered;
             }
@@ -100,10 +92,15 @@
           color: #fff;
         }
       }
+
+      .links{
+        color: var(--color-white);
+
+      }
   
       .links a {
         margin: 0 5px;
-        color: #fff;
+        color: var(--color-white);
         &:hover {
           color: orangered;
         }
@@ -168,6 +165,7 @@
   
         .header-right {
           display: block;
+          
           .cart {
             // display: block;
             // padding: 5px 0;
@@ -185,11 +183,13 @@
   
           .links {
             display: block;
+            
             a {
               display: block;
               margin: 0;
               padding: 5px 0;
               border-bottom: 1px solid #333;
+              
             }
           }
         }
