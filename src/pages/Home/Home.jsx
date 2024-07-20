@@ -1,9 +1,11 @@
 import React from 'react'
 import './Home.scss';
+import { useSelector } from 'react-redux';
 
 
 function Home() {
-  const name ="Anupa Baral"
+  // const name ="Anupa Baral"
+  const {name} = useSelector((state)=>state.data);
   return (
     <div className='home'>
       <div className='container'> 
