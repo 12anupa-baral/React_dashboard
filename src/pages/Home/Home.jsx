@@ -4,15 +4,12 @@ import { useSelector } from 'react-redux';
 
 
 function Home() {
-  // const name ="Anupa Baral"
   const {name} = useSelector((state)=>state.data);
   return (
     <div className='home'>
       <div className='container'> 
-      <h2>Home Page</h2>
-      <p>
-        Welcome to the <b>Home</b>Page
-      </p>
+
+      <h2>Welcome to <b>ReactStarter</b></h2>
       <p>
         This page has <b>Redux Toolkit</b> set up.
       </p>

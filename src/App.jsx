@@ -8,6 +8,7 @@ import NotFound from './pages/404/NotFound'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Reset from './pages/auth/Reset'
+import Admin from './pages/admin/admin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
     <Route path='*' element={<NotFound/>}/>
     <Route path='login' element={<Login/>}/>
     <Route path='register' element={<Register/>}/>
+    <Route path='/admin/*' element={<Admin/>}/>
     <Route path='reset' element={<Reset/>}/>
    </Routes>
    <Footer/>

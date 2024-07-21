@@ -48,7 +48,7 @@ function Header() {
             </li>
 
             <li>
-              <NavLink to="/dashboard" className={activeLink}>
+              <NavLink to="/admin/home" className={activeLink}>
                 Dashboard
               </NavLink>
             </li>
