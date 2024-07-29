@@ -1,69 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { useEffect, useState } from "react";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "link");
-const activeSubLink = ({ isActive }) => (isActive ? "active" : "link");
+const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
-function SidebarItem({ item, isOpen, setIsOpen }) {
+const SidebarItem = ({ item, isOpen, setIsOpen }) => {
   const [expandMenu, setExpandMenu] = useState(false);
-
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
       setExpandMenu(false);
     }
-  }, [isOpen, setIsOpen]);
+  }, [isOpen]);
 
   const hideSidebar = () => {
     setExpandMenu(false);
     setIsOpen(false);
   };
 
-  const toggleExpandMenu = () => {
-    setExpandMenu(!expandMenu);
-  };
-
   if (item.children) {
     return (
-      <div className="sidebar-item s-parent">
-        <div className="sidebar-item-header" onClick={toggleExpandMenu}>
-          <div className="icon">{item.icon && <item.icon />}</div>
-          {isOpen && <div className="title">{item.title}</div>}
-          {isOpen && (
-            <div className="arrow">
-              {expandMenu ? <MdKeyboardArrowRight /> : <MdKeyboardArrowRight />}
-            </div>
-          )}
+      <div className={expandMenu ? "sidebar-item s-parent open" : "sidebar-item s-parent"}>
+        <div className="sidebar-title" onClick={() => setExpandMenu(!expandMenu)}>
+          <span>
+            {item.icon && <div className="icon">{<item.icon />}</div>}
+            {isOpen && <div>{item.title}</div>}
+          </span>
+          <MdKeyboardArrowRight size={25} className="arrow-icon" />
         </div>
-        {expandMenu && isOpen && (
-          <div className="sidebar-submenu">
-            {item.children.map((subItem, index) => (
-              <NavLink
-                key={index}
-                to={subItem.path}
-                className={activeSubLink}
-                onClick={hideSidebar}
-              >
-                <div className="sidebar-subitem">
-                  {subItem.icon && <div className="icon"><subItem.icon /></div>}
-                  <div className="title">{subItem.title}</div>
-                </div>
-              </NavLink>
-            ))}
-          </div>
-        )}
+        <div className="sidebar-content">
+          {item.children.map((child, index) => {
+            return (
+              <div key={index} className="s-child">
+                <NavLink to={child.path} className={activeSublink}>
+                  <div className="sidebar-item" onClick={hideSidebar}>
+                    <div className="sidebar-subitem">
+                      {child.icon && <div className="icon">{}</div>}
+                      <div className="title">{child.title}</div>
+                    </div>
+                  </div>
+                </NavLink>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   } else {
     return (
-      <NavLink to={item.path} className={activeLink} onClick={hideSidebar}>
-        <div className="sidebar-item s-parent">
-          <div className="icon">{item.icon && <item.icon />}</div>
-          {isOpen && <div className="title">{item.title}</div>}
+      <NavLink to={item.path} className={activeLink}>
+        <div className="sidebar-item s-parent" onClick={hideSidebar}>
+          <div className="sidebar-title">
+            {item.icon && <div className="icon">{<item.icon />}</div>}
+            {isOpen && <div>{item.title}</div>}
+          </div>
         </div>
       </NavLink>
     );
   }
-}
+};
 
 export default SidebarItem;

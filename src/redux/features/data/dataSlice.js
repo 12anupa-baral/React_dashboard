@@ -3,7 +3,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    name : "Anupa Baral Redux"
+    name : "Anupa Baral"
 
 }
 
