@@ -9,13 +9,13 @@ function Home() {
     <div className='home'>
       <div className='container'> 
 
-      <h2>Welcome to <b>ReactStarter</b></h2>
-      <p>
+      <h2>Welcome to <b>My Website</b></h2>
+      {/* <p>
         This page has <b>Redux Toolkit</b> set up.
       </p>
       <p> 
         The name: <b>{name}</b> is stored in the dataSlice
-      </p>
+      </p> */}
       </div>
     </div>
   )
